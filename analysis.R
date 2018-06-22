@@ -114,7 +114,7 @@ results <- cbind(results, team_one_rank, team_one_form, team_two_rank, team_two_
 # Remove NA values from results for our model's dataframe
 results <- results[complete.cases(results), ]
 
-# Fit the model
+# Fit the model, but first set tie to be reference point for multinomial model
 results$outcome2 <- relevel(results$outcome, ref = "tie")
 model <- 
   multinom(outcome2 ~ team_one_rank + team_two_rank + team_one_form + team_two_form + neutral,
